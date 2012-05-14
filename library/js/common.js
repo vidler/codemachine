@@ -50,6 +50,16 @@ var roller = (function() {
                             break;
                     };
 
+            		var html = '';
+                                                
+			for(var i=start; i<=stop; i++) {
+				for( var k in game.collection[i] ) {
+					html += '<li>' + k + '</li>';
+				};
+			}
+				
+			$(this).append(html);
+                    
                     numRunning++;
 
                     $(this).addClass('finish');
@@ -60,9 +70,9 @@ var roller = (function() {
 
                             numRunning--;
 
-                            $(this).removeClass('short medium long finish').children().slice(0,7).remove();
+                            $(this).removeClass('short medium long finish').children().slice(0,10).remove();
 
-                            var html = '';
+                           /* var html = '';
                                                         
                             for(var i=start; i<stop; i++) {
                             	for( var k in game.collection[i] ) {
@@ -70,7 +80,7 @@ var roller = (function() {
 								};
                             }
                             
-                            $(this).append(html);
+                            $(this).append(html);*/
 
                             if (numRunning === 0) {
                                 running = false;
@@ -92,15 +102,21 @@ var roller = (function() {
 				game = new CodeGenerator( { "tags" : codeGeneratorTags } );
 				
                 $start = $('#start');
+                $reset = $('#reset');
                 $roller = $('.roller');
 										
                 $start.on('click', function(e) {
 
-                    roller.start(e);
                     game.roll( 10 );
+                    roller.start(e);
 
                 });
-                
+                $reset.on('click', function(e) {
+
+			game.reset();
+			$('#counter').text( game.score );
+					
+                });
                 
                 /*
 				game = new CodeGenerator( { "tags" : codeGeneratorTags } );
