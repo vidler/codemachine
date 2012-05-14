@@ -146,7 +146,8 @@ a#reset.disabled:hover {
   transition: margin 6s;
 }
 .machine .roller.finish {
-  margin: -585px 0 0;
+  //margin: -585px 0 0;
+  margin: -815px 0 0;
 }
 .machine .roller li {
   background: #fcfcfc;
