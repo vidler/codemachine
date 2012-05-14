@@ -25,7 +25,8 @@ var CodeGenerator = function( options ) {
 	    
 	    makeCollection : function( number ) {
 	    	this.collection = [];
-	    	var number = ++number * this.rollers;
+	    	var number = number * this.rollers;
+	    	number++;
 			while( --number ) {
 				var item = this.randomize();
 				this.collection.push( item );
